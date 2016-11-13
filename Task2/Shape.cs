@@ -37,7 +37,7 @@ namespace Task2
         private double sideA;
         private double sideB;
         private double sideC;
-        public Triangle(int sideA, int sideB, int sideC)
+        public Triangle(double sideA, double sideB, double sideC)
         {
             if (sideA <= 0 || sideB <= 0 || sideC <= 0)
                 throw new ArgumentException("Every parameter must be > 0.");
