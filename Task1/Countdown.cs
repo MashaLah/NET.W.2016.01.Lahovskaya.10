@@ -14,57 +14,27 @@ namespace Task1
         {
             this.time = time;
         }
-        public event EventHandler CountdownFinished;
+        public event EventHandler<CountdownFinishedEventArgs> CountdownFinished = delegate { };
 
-        protected virtual void OnCountdownFinished(Object sender, EventArgs e)
+        protected virtual void OnCountdownFinished(CountdownFinishedEventArgs e)
         {
-            CountdownFinished?.Invoke(sender, e);
+            EventHandler<CountdownFinishedEventArgs> temp = CountdownFinished;
+            temp?.Invoke(this, e);
         }
 
-        public void StartCountdown()
+        public void StartCountdown(string message)
         {
-            for (int i = time; i > 0; i--)
-            {
-                Thread.Sleep(1000);
-                Console.WriteLine(i);
-            }
-            OnCountdownFinished(this, new EventArgs());
+            Thread.Sleep(1000 * time);
+            OnCountdownFinished(new CountdownFinishedEventArgs(message));
         }
     }
 
-    public class PositiveListener
+    public sealed class CountdownFinishedEventArgs : EventArgs
     {
-        public PositiveListener(Countdown countdown)
+        public CountdownFinishedEventArgs(string message)
         {
-            countdown.CountdownFinished += countdown_CountdownFinished;
+            Message = message;
         }
-
-        public void Unregister(Countdown countdown)
-        {
-            countdown.CountdownFinished -= countdown_CountdownFinished;
-        }
-
-        private void countdown_CountdownFinished(object sender, EventArgs e)
-        {
-            Console.WriteLine("Hurray!");
-        }
-    }
-
-    public class NegativeListener
-    {
-        public NegativeListener(Countdown countdown)
-        {
-            countdown.CountdownFinished += countdown_CountdownFinished;
-        }
-
-        public void Unregister(Countdown countdown)
-        {
-            countdown.CountdownFinished -= countdown_CountdownFinished;
-        }
-
-        private void countdown_CountdownFinished(object sender, EventArgs e)
-        {
-            Console.WriteLine("Oh no!");
-        }
+        public string Message { get; }
     }
 }
