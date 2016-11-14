@@ -9,8 +9,8 @@ namespace Task2
 {
     public interface IShape
     {
-        double Perimeter { get; }
-        double Area { get; }
+        double Perimeter();
+        double Area();
     }
 
     public class Circle : IShape
@@ -21,14 +21,8 @@ namespace Task2
             if (radius <= 0) throw new ArgumentException($"Parameter {nameof(radius)} must be > 0.");
             this.radius = radius;
         }
-        public double Perimeter
-        {
-            get {return 2 * PI * radius; }
-        }
-        public double Area
-        {
-            get { return PI * Pow(radius, 2); }
-        }
+        public double Perimeter() => 2 * PI * radius;
+        public double Area() => PI * Pow(radius, 2);
     }
 
     public class Triangle : IShape
@@ -46,15 +40,10 @@ namespace Task2
             this.sideB = sideB;
             this.sideC = sideC;
         }
-        public double Perimeter
-        {
-            get { return sideA + sideB + sideC; }
-        }
-        public double Area
-        {
-            get { return Sqrt(halfPerimeter * (halfPerimeter - sideA) * (halfPerimeter - sideB) * (halfPerimeter - sideC)); }
-        }
-        private double halfPerimeter => Perimeter / 2;
+        public double Perimeter() => sideA + sideB + sideC;
+        public double Area() =>
+            Sqrt(halfPerimeter * (halfPerimeter - sideA) * (halfPerimeter - sideB) * (halfPerimeter - sideC));
+        private double halfPerimeter => Perimeter() / 2;
     }
 
     public class Square : IShape 
@@ -64,15 +53,9 @@ namespace Task2
         {
             if (side <= 0) throw new ArgumentException($"Parameter {nameof(side) } must be > 0.");
             this.side = side;
-        } 
-        public double Perimeter
-        {
-            get { return side * 4; }
         }
-        public double Area
-        {
-            get { return Pow(side, 2); }
-        }
+        public double Perimeter() => side * 4;
+        public double Area() => Pow(side, 2);
     }
 
     public class Rectangle : IShape
@@ -85,13 +68,7 @@ namespace Task2
             this.sideA = sideA;
             this.sideB = sideB;
         }
-        public double Perimeter
-        {
-            get { return (sideA + sideB) * 2; }
-        }
-        public double Area
-        {
-            get { return sideA * sideB; }
-        }
+        public double Perimeter() => (sideA + sideB) * 2;
+        public double Area() => sideA * sideB;
     }
 }

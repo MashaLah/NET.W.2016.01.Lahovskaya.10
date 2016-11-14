@@ -68,7 +68,7 @@ namespace Task2Tests
         [Test, TestCaseSource(nameof(ValidTestCasesPerimeter))]
         public void Perimeter_ReternValidPerimeter(IShape obj, double expected)
         {
-            Assert.AreEqual(obj.Perimeter, expected);
+            Assert.AreEqual(obj.Perimeter(), expected);
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Task2Tests
         [Test, TestCaseSource(nameof(ValidTestCasesArea))]
         public void Area_ReternValidArea(IShape obj, double expected)
         {
-            Assert.AreEqual(obj.Area, expected);
+            Assert.AreEqual(obj.Area(), expected);
         }
 
         /// <summary>
