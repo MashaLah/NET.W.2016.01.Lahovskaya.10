@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using Task2;
 using System.Collections;
+using static System.Math;
 
 namespace Task2Tests
 {
@@ -86,7 +87,7 @@ namespace Task2Tests
         {
             get
             {
-                yield return new TestCaseData(new Circle(3), 6 * Math.PI);
+                yield return new TestCaseData(new Circle(3), 6 * PI);
                 yield return new TestCaseData(new Rectangle(3,2),10);
                 yield return new TestCaseData(new Triangle(3,2,4),9);
                 yield return new TestCaseData(new Square(3),12);
@@ -100,9 +101,9 @@ namespace Task2Tests
         {
             get
             {
-                yield return new TestCaseData(new Circle(3), 9*Math.PI);
+                yield return new TestCaseData(new Circle(3), 9 * PI);
                 yield return new TestCaseData(new Rectangle(3, 2), 6);
-                yield return new TestCaseData(new Triangle(3, 3, 4),Math.Sqrt(20));
+                yield return new TestCaseData(new Triangle(3, 3, 4), Sqrt(20));
                 yield return new TestCaseData(new Square(3), 9);
             }
         }

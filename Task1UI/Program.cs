@@ -16,9 +16,9 @@ namespace Task1UI
             Countdown countdown = new Countdown(time);
             PositiveListener positiveListener = new PositiveListener(countdown);
             NegativeListener negativeListener = new NegativeListener(countdown);
-            countdown.StartCountdown("Countdown run");
+            countdown.StartCountdown("Countdown run.");
             negativeListener.Unregister(countdown);
-            countdown.StartCountdown("Countdown run again");
+            countdown.StartCountdown("Countdown run again.");
             Console.ReadLine();
         }
     }
@@ -37,7 +37,7 @@ namespace Task1UI
 
         private void countdown_CountdownFinished(object sender, CountdownFinishedEventArgs e)
         {
-            Console.WriteLine(e.Message);
+            Console.WriteLine($"Hurray! {e.Message}");
         }
     }
 
@@ -55,7 +55,7 @@ namespace Task1UI
 
         private void countdown_CountdownFinished(object sender, CountdownFinishedEventArgs e)
         {
-            Console.WriteLine(e.Message);
+            Console.WriteLine($"Oh, no! {e.Message}");
         }
     }
 }
