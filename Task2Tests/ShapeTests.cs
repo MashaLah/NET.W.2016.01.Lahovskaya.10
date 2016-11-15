@@ -66,7 +66,7 @@ namespace Task2Tests
         /// A test for Perimeter.
         /// </summary>
         [Test, TestCaseSource(nameof(ValidTestCasesPerimeter))]
-        public void Perimeter_ReternValidPerimeter(IShape obj, double expected)
+        public void Perimeter_ReternValidPerimeter(Shape obj, double expected)
         {
             Assert.AreEqual(obj.Perimeter(), expected);
         }
@@ -75,8 +75,9 @@ namespace Task2Tests
         /// A test for Area.
         /// </summary>
         [Test, TestCaseSource(nameof(ValidTestCasesArea))]
-        public void Area_ReternValidArea(IShape obj, double expected)
+        public void Area_ReternValidArea(Shape obj, double expected)
         {
+            obj.Area();
             Assert.AreEqual(obj.Area(), expected);
         }
 

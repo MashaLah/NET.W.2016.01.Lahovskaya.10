@@ -7,13 +7,13 @@ using static System.Math;
 
 namespace Task2
 {
-    public interface IShape
+    public abstract class Shape
     {
-        double Perimeter();
-        double Area();
+        abstract public double Perimeter();
+        abstract public double Area();
     }
 
-    public class Circle : IShape
+    public class Circle : Shape
     {
         private double radius;
         public Circle(double radius)
@@ -21,11 +21,11 @@ namespace Task2
             if (radius <= 0) throw new ArgumentException($"Parameter {nameof(radius)} must be > 0.");
             this.radius = radius;
         }
-        public double Perimeter() => 2 * PI * radius;
-        public double Area() => PI * Pow(radius, 2);
+        public override double Perimeter() => 2 * PI * radius;
+        public override double Area() => PI * Pow(radius, 2);
     }
 
-    public class Triangle : IShape
+    public class Triangle : Shape
     {
         private double sideA;
         private double sideB;
@@ -40,13 +40,13 @@ namespace Task2
             this.sideB = sideB;
             this.sideC = sideC;
         }
-        public double Perimeter() => sideA + sideB + sideC;
-        public double Area() =>
+        public override double Perimeter() => sideA + sideB + sideC;
+        public override double Area() =>
             Sqrt(halfPerimeter * (halfPerimeter - sideA) * (halfPerimeter - sideB) * (halfPerimeter - sideC));
         private double halfPerimeter => Perimeter() / 2;
     }
 
-    public class Square : IShape 
+    public class Square : Shape 
     {
         private double side;
         public Square(double side)
@@ -54,11 +54,11 @@ namespace Task2
             if (side <= 0) throw new ArgumentException($"Parameter {nameof(side) } must be > 0.");
             this.side = side;
         }
-        public double Perimeter() => side * 4;
-        public double Area() => Pow(side, 2);
+        public override double Perimeter() => side * 4;
+        public override double Area() => Pow(side, 2);
     }
 
-    public class Rectangle : IShape
+    public class Rectangle : Shape
     {
         private double sideA;
         private double sideB;
@@ -68,7 +68,7 @@ namespace Task2
             this.sideA = sideA;
             this.sideB = sideB;
         }
-        public double Perimeter() => (sideA + sideB) * 2;
-        public double Area() => sideA * sideB;
+        public override double Perimeter() => (sideA + sideB) * 2;
+        public override double Area() => sideA * sideB;
     }
 }
