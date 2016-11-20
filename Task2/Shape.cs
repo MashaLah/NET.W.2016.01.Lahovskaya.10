@@ -57,7 +57,7 @@ namespace Task2
             get { return radius; }
             set
             {
-                if (value <= Epsilon) throw new ArgumentException($"Parameter {nameof(radius)} must be > 0.0000001.");
+                if (value <= Epsilon) throw new ArgumentException($"Parameter {nameof(radius)} must be > {Epsilon}");
                 radius = value;
             }
         }
@@ -91,7 +91,7 @@ namespace Task2
         public Triangle(double sideA, double sideB, double sideC)
         {
             if (sideA <= Epsilon || sideB <= Epsilon || sideC <= Epsilon)
-                throw new ArgumentException("Every parameter must be > 0.0000001.");
+                throw new ArgumentException($"Every parameter must be > {Epsilon}.");
             if (sideA > sideB + sideC || sideB > sideA + sideC || sideC > sideA + sideB)
                 throw new ArgumentException("It is impossible to make a triangle with entered length of sides.");
             SideA = sideA;
@@ -146,7 +146,7 @@ namespace Task2
             get { return side; }
             set
             {
-                if (value <= Epsilon) throw new ArgumentException($"Parameter {nameof(side) } must be > 0.0000001.");
+                if (value <= Epsilon) throw new ArgumentException($"Parameter {nameof(side) } must be > {Epsilon}");
                 side = value;
             }
         }
@@ -191,7 +191,7 @@ namespace Task2
             get { return sideA; }
             set
             {
-                if (value <= Epsilon) throw new ArgumentException("Every parameter must be > 0.0000001.");
+                if (value <= Epsilon) throw new ArgumentException($"Every parameter must be > {Epsilon}.");
                 sideA = value;
             }
         }
@@ -204,7 +204,7 @@ namespace Task2
             get { return sideB; }
             set
             {
-                if (value <= Epsilon) throw new ArgumentException("Every parameter must be > 0.0000001.");
+                if (value <= Epsilon) throw new ArgumentException($"Every parameter must be > {Epsilon}.");
                 sideB = value;
             }
         }
